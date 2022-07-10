@@ -1,0 +1,35 @@
+@model ResultsViewModel<PokemonViewModel>
+@{
+    ViewData["Title"] = "Pokemon";
+}
+<h1>Pokemon Index</h1>
+@if(Model.Results.Count()>0)
+{
+    <div>
+        @foreach (var pokemon in Model.Results)
+        {
+            <div>
+                <h4>@pokemon.Name </h4>
+                <h2>a @pokemon.Type type Pokemon</h2>
+                <div>
+                    <p>@pokemon.Weight</p>
+                    <p>@pokemon.Height</p>
+                </div>
+            </div>
+        <div>
+            @if (Model.Previous is not null)
+            {
+                <a asp-action= "Index" asp-route-page="@Model.PrevPageNum">Previous</a>
+            }
+            @if (Model.Next is not null)
+            {
+                <a asp-action= "Index" asp-route-page="@Model.NextPageNum">Next</a>
+            }
+        </div>
+        }
+    </div>
+}
+else
+{
+    <p>There are no reults for this page.</p>
+}

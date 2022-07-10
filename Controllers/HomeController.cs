@@ -7,7 +7,7 @@ namespace PokeAPIMVC.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
+    private static Random _random = new Random();
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -15,7 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        string[] welcomes = new[] {"Hello","Welcome","Hi"}; 
+        string welcome = welcomes[_random.Next(0, welcomes.Length)];
+        return View(model: welcome);
     }
 
     public IActionResult Privacy()

@@ -1,12 +1,10 @@
-﻿@{
+﻿@model string
+@{
     ViewData["Title"] = "Home Page";
-    Random  rand = new Random();
-    string[] welcomes = new[] {"Hello","Welcome","Hi"}; 
-    string welcome = welcomes[rand.Next(0, welcomes.Length)];
 }
 
 <div class="text-center">
-    <h1 class="display-4">@welcome</h1>
+    <h1 class="display-4">@Model</h1>
     <h2>Even the very best need their Pokedex.</h2>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
